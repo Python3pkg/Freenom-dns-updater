@@ -21,7 +21,7 @@ is_windows = any(platform.win32_ver())
 
 if six.PY2:
     try:
-        from urlparse import urlparse
+        from urllib.parse import urlparse
     except ImportError:
         raise
 else:

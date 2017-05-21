@@ -11,12 +11,12 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 with open('requirements.txt', encoding='utf-8') as f:
-    install_requires = map(lambda line: line.strip(), f.readlines())
-    install_requires = filter(lambda line: bool(line), install_requires)
+    install_requires = [line.strip() for line in f.readlines()]
+    install_requires = [line for line in install_requires if bool(line)]
 
 with open('test-requirements.txt', encoding='utf-8') as f:
-    test_requires = map(lambda line: line.strip(), f.readlines())
-    test_requires = filter(lambda line: bool(line), install_requires)
+    test_requires = [line.strip() for line in f.readlines()]
+    test_requires = [line for line in install_requires if bool(line)]
 
 setup(
     name='freenom dns updater',
